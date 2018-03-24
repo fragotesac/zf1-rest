@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-/**
- * Zend_Rest_Server
- */
-require_once 'Zend/Rest/Client/Result.php';
 
 /**
  * Test cases for Zend_Rest_Server

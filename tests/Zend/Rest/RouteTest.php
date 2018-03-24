@@ -20,14 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Rest_Route */
-require_once 'Zend/Rest/Route.php';
-
-/** Zend_Controller_Front */
-require_once 'Zend/Controller/Front.php';
-
-/** Zend_Controller_Request_HttpTestCase */
-require_once 'Zend/Controller/Request/HttpTestCase.php';
 
 /**
  * @category   Zend
@@ -75,7 +67,6 @@ class Zend_Rest_RouteTest extends PHPUnit\Framework\TestCase
     public function test_getInstance_fromINIConfig()
     {
     	$config = new Zend_Config_Ini(dirname(__FILE__) . '/../Controller/_files/routes.ini', 'testing');
-    	require_once('Zend/Controller/Router/Rewrite.php');
     	$router = new Zend_Controller_Router_Rewrite();
     	$router->addConfig($config, 'routes');
     	$route = $router->getRoute('rest');
