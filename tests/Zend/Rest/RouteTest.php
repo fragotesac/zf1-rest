@@ -74,7 +74,6 @@ class Zend_Rest_RouteTest extends PHPUnit\Framework\TestCase
 
     public function test_getInstance_fromINIConfig()
     {
-    	require_once('Zend/Config/Ini.php');
     	$config = new Zend_Config_Ini(dirname(__FILE__) . '/../Controller/_files/routes.ini', 'testing');
     	require_once('Zend/Controller/Router/Rewrite.php');
     	$router = new Zend_Controller_Router_Rewrite();
