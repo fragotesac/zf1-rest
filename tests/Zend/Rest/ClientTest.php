@@ -114,12 +114,8 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
 
         $rest = new Zend_Rest_Client();
 
-        try {
-            $response = $rest->restGet('/rest/');
-            $this->fail('Should throw exception if no URI in object');
-        } catch (Exception $e) {
-            // success
-        }
+        $this->expectException(Exception::class);
+        $response = $rest->restGet('/rest/');
     }
 
     public function testRestFixesPathWithMissingSlashes()
@@ -321,12 +317,8 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
      */
     public function testInvalidXmlInClientResultLeadsToException()
     {
-        try {
-            $result = new Zend_Rest_Client_Result("invalidxml");
-            $this->fail();
-        } catch(Zend_Rest_Client_Result_Exception $e) {
-
-        }
+        $this->expectException(Zend_Rest_Client_Result_Exception::class);
+        $result = new Zend_Rest_Client_Result("invalidxml");
     }
 
     /**
