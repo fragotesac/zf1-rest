@@ -16,7 +16,7 @@
         "diablomedia/zendframework1-config": "^1.0.0",
         "diablomedia/zendframework1-server": "^1.0.0",
         "diablomedia/zendframework1-xml": "^1.0.0",
-        "diablomedia/zendframework1-controller": "*",
+        "diablomedia/zendframework1-controller": "^1.0.0",
         "diablomedia/zendframework1-http": "^1.0.0",
         "diablomedia/zendframework1-service": "^1.0.0",
         "diablomedia/zendframework1-uri": "^1.0.0"
