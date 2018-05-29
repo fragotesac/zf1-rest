@@ -89,7 +89,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
      */
     public function __construct()
     {
-        set_exception_handler(array($this, "fault"));
+        set_exception_handler(array($this, 'fault'));
         $this->_reflection = new Zend_Server_Reflection();
     }
 
@@ -174,7 +174,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
                        && $this->_functions[$this->_method]->isPublic()
                 ) {
                     $requestKeys = array_keys($request);
-                    array_walk($requestKeys, array(__CLASS__, "lowerCase"));
+                    array_walk($requestKeys, array(__CLASS__, 'lowerCase'));
                     $request = array_combine($requestKeys, $request);
 
                     $funcArgs = $this->_functions[$this->_method]->getParameters();
@@ -195,7 +195,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
                     $anonymousArgs = array();
                     foreach ($request as $key => $value) {
                         if (substr($key, 0, 3) == 'arg') {
-                            $key = str_replace('arg', '', $key);
+                            $key                 = str_replace('arg', '', $key);
                             $anonymousArgs[$key] = $value;
                             if (($index = array_search($key, $missingArgs)) !== false) {
                                 unset($missingArgs[$index]);
@@ -217,9 +217,11 @@ class Zend_Rest_Server implements Zend_Server_Interface
                             new Zend_Rest_Server_Exception(
                                 'Invalid Method Call to ' . $this->_method
                                 . '. Missing argument(s): ' . implode(
-                                    ', ', $missingArgs
+                                    ', ',
+                                    $missingArgs
                                 ) . '.'
-                            ), 400
+                            ),
+                            400
                         );
                     }
 
@@ -272,7 +274,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
             }
         } else {
             $result = $this->fault(
-                new Zend_Rest_Server_Exception("No Method Specified."),
+                new Zend_Rest_Server_Exception('No Method Specified.'),
                 404
             );
         }
@@ -301,7 +303,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
         }
 
         return $response;
-     }
+    }
 
     /**
      * Implement Zend_Server_Interface::setClass()
@@ -335,7 +337,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
 
         $method = $function->getName();
 
-        $dom    = new DOMDocument('1.0', $this->getEncoding());
+        $dom = new DOMDocument('1.0', $this->getEncoding());
         if ($class) {
             $root   = $dom->createElement($class);
             $method = $dom->createElement($method);
@@ -371,9 +373,10 @@ class Zend_Rest_Server implements Zend_Server_Interface
      * @return void
      */
     protected function _structValue(
-        $struct, DOMDocument $dom, DOMElement $parent
-    )
-    {
+        $struct,
+        DOMDocument $dom,
+        DOMElement $parent
+    ) {
         $struct = (array)$struct;
 
         foreach ($struct as $key => $value) {
@@ -418,11 +421,11 @@ class Zend_Rest_Server implements Zend_Server_Interface
 
         $dom = new DOMDocument('1.0', $this->getEncoding());
         if ($class) {
-            $xml = $dom->createElement($class);
+            $xml        = $dom->createElement($class);
             $methodNode = $dom->createElement($method);
             $xml->appendChild($methodNode);
         } else {
-            $xml = $dom->createElement($method);
+            $xml        = $dom->createElement($method);
             $methodNode = $xml;
         }
         $xml->setAttribute('generator', 'zend');
@@ -505,13 +508,15 @@ class Zend_Rest_Server implements Zend_Server_Interface
         } elseif (($exception !== null) || 'rest' == $function) {
             $xmlResponse->appendChild(
                 $dom->createElement(
-                    'message', 'An unknown error occured. Please try again.'
+                    'message',
+                    'An unknown error occured. Please try again.'
                 )
             );
         } else {
             $xmlResponse->appendChild(
                 $dom->createElement(
-                    'message', 'Call to ' . $method . ' failed.'
+                    'message',
+                    'Call to ' . $method . ' failed.'
                 )
             );
         }
@@ -556,7 +561,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
                 $this->_functions[$func] = $this->_reflection->reflectFunction($func);
             } else {
                 throw new Zend_Rest_Server_Exception(
-                    "Invalid Method Added to Service."
+                    'Invalid Method Added to Service.'
                 );
             }
         }

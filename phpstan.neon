@@ -1,3 +1,6 @@
 parameters:
+    excludes_analyse:
+        - %rootDir%/../../../vendor/*
+        - %rootDir%/../../../tests/*
     ignoreErrors:
         - '#Zend_Rest_Route::__construct\(\) does not call parent constructor from Zend_Controller_Router_Route_Module\.#'

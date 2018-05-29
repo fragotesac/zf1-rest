@@ -36,10 +36,10 @@ class Zend_Rest_Client extends Zend_Service_Abstract
      */
     protected $_data = array();
 
-     /**
-     * Zend_Uri of this web service
-     * @var Zend_Uri|null
-     */
+    /**
+    * Zend_Uri of this web service
+    * @var Zend_Uri|null
+    */
     protected $_uri = null;
 
     /**
@@ -105,7 +105,7 @@ class Zend_Rest_Client extends Zend_Service_Abstract
 
         $uri = $this->_uri->getUri();
 
-        if ($path[0] != '/' && $uri[strlen($uri)-1] != '/') {
+        if ($path[0] != '/' && $uri[strlen($uri) - 1] != '/') {
             $path = '/' . $path;
         }
 
@@ -249,9 +249,9 @@ class Zend_Rest_Client extends Zend_Service_Abstract
                 $args[0] = $this->_uri->getPath();
             }
             $this->_data['rest'] = 1;
-            $data = array_slice($args, 1) + $this->_data;
-            $response = $this->{'rest' . $method}($args[0], $data);
-            $this->_data = array();//Initializes for next Rest method.
+            $data                = array_slice($args, 1) + $this->_data;
+            $response            = $this->{'rest' . $method}($args[0], $data);
+            $this->_data         = array();//Initializes for next Rest method.
             return new Zend_Rest_Client_Result($response->getBody());
         } else {
             // More than one arg means it's definitely a Zend_Rest_Server
@@ -259,14 +259,14 @@ class Zend_Rest_Client extends Zend_Service_Abstract
                 // Uses first called function name as method name
                 if (!isset($this->_data['method'])) {
                     $this->_data['method'] = $method;
-                    $this->_data['arg1']  = $args[0];
+                    $this->_data['arg1']   = $args[0];
                 }
-                $this->_data[$method]  = $args[0];
+                $this->_data[$method] = $args[0];
             } else {
                 $this->_data['method'] = $method;
                 if (sizeof($args) > 0) {
                     foreach ($args as $key => $arg) {
-                        $key = 'arg' . $key;
+                        $key               = 'arg' . $key;
                         $this->_data[$key] = $arg;
                     }
                 }

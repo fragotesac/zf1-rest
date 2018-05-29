@@ -31,10 +31,11 @@
 class Zend_Rest_TestController extends Zend_Rest_Controller
 {
     public $testValue = '';
-    public function __construct(Zend_Controller_Request_Abstract $request,
+    public function __construct(
+        Zend_Controller_Request_Abstract $request,
                                 Zend_Controller_Response_Abstract $response,
-                                array $invokeArgs = array())
-    {
+                                array $invokeArgs = array()
+    ) {
         $this->testValue = '';
     }
     public function indexAction()
@@ -61,7 +62,6 @@ class Zend_Rest_TestController extends Zend_Rest_Controller
     {
         $this->testValue = 'deleteAction';
     }
-
 }
 /**
  * @category   Zend
@@ -77,8 +77,8 @@ class Zend_Rest_ControllerTest extends PHPUnit\Framework\TestCase
 
     public function setUp()
     {
-        $request = new Zend_Controller_Request_HttpTestCase();
-        $response = new Zend_Controller_Response_HttpTestCase();
+        $request               = new Zend_Controller_Request_HttpTestCase();
+        $response              = new Zend_Controller_Response_HttpTestCase();
         $this->_testController = new Zend_Rest_TestController($request, $response);
     }
 

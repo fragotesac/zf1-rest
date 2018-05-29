@@ -32,4 +32,3 @@
 class Zend_Rest_Server_Exception extends Zend_Rest_Exception
 {
 }
-
