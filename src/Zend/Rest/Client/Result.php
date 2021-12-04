@@ -168,6 +168,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate
      *
      * @return SimpleXMLIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return $this->_sxml;
