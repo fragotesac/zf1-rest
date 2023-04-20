@@ -34,6 +34,8 @@
  */
 class Zend_Rest_ServerTest extends PHPUnit\Framework\TestCase
 {
+    protected $request;
+
     public function setUp(): void
     {
         if (isset($this->request)) {
@@ -344,7 +346,7 @@ class Zend_Rest_ServerTest extends PHPUnit\Framework\TestCase
         $e      = new Exception('testing fault');
         $server = new Zend_Rest_Server();
         $fault  = $server->fault($e);
-        $this->assertTrue($fault instanceof DOMDocument);
+        $this->assertInstanceOf(DOMDocument::class, $fault);
         $sx = simplexml_import_dom($fault);
         $this->assertTrue(isset($sx->response));
         $this->assertTrue(isset($sx->response->message));
@@ -355,7 +357,7 @@ class Zend_Rest_ServerTest extends PHPUnit\Framework\TestCase
     {
         $server = new Zend_Rest_Server();
         $fault  = $server->fault('testing fault');
-        $this->assertTrue($fault instanceof DOMDocument);
+        $this->assertInstanceOf(DOMDocument::class, $fault);
         $sx = simplexml_import_dom($fault);
         $this->assertTrue(isset($sx->response));
         $this->assertTrue(isset($sx->response->message));
@@ -820,6 +822,9 @@ class Zend_Rest_Server_Test
 
 class Zend_Rest_Server_Test2
 {
+    protected $arg1;
+    protected $arg2;
+
     public function __construct($arg1 = 'unset')
     {
         $this->arg1 = $arg1;

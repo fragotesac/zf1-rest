@@ -34,6 +34,10 @@
  */
 class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
 {
+    protected $path;
+    protected $adapter;
+    protected $rest;
+
     public function setUp(): void
     {
         $this->path = dirname(__FILE__) . '/responses/';
@@ -84,17 +88,17 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
 
         $client = new Zend_Rest_Client('http://framework.zend.com/rest/');
         $uri    = $client->getUri();
-        $this->assertTrue($uri instanceof Zend_Uri_Http);
+        $this->assertInstanceOf(Zend_Uri_Http::class, $uri);
         $this->assertEquals('http://framework.zend.com/rest/', $uri->getUri());
 
         $client->setUri(Zend_Uri::factory('http://framework.zend.com/soap/'));
         $uri = $client->getUri();
-        $this->assertTrue($uri instanceof Zend_Uri_Http);
+        $this->assertInstanceOf(Zend_Uri_Http::class, $uri);
         $this->assertEquals('http://framework.zend.com/soap/', $uri->getUri());
 
         $client->setUri('http://framework.zend.com/xmlrpc/');
         $uri = $client->getUri();
-        $this->assertTrue($uri instanceof Zend_Uri_Http);
+        $this->assertInstanceOf(Zend_Uri_Http::class, $uri);
         $this->assertEquals('http://framework.zend.com/xmlrpc/', $uri->getUri());
     }
 
@@ -135,7 +139,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
         $rest = new Zend_Rest_Client('http://framework.zend.com');
 
         $response = $rest->restGet('rest');
-        $this->assertTrue($response instanceof Zend_Http_Response);
+        $this->assertInstanceOf(Zend_Http_Response::class, $response);
         $this->assertStringContainsString($expXml, $response->getBody());
     }
 
@@ -154,7 +158,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
         $this->adapter->setResponse($response);
 
         $response = $this->rest->restGet('/rest/');
-        $this->assertTrue($response instanceof Zend_Http_Response);
+        $this->assertInstanceOf(Zend_Http_Response::class, $response);
         $this->assertStringContainsString($expXml, $response->getBody());
     }
 
@@ -174,7 +178,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
 
         $reqXml   = file_get_contents($this->path . 'returnInt.xml');
         $response = $this->rest->restPost('/rest/', $reqXml);
-        $this->assertTrue($response instanceof Zend_Http_Response);
+        $this->assertInstanceOf(Zend_Http_Response::class, $response);
         $body = $response->getBody();
         $this->assertStringContainsString($expXml, $response->getBody());
 
@@ -197,7 +201,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
         $this->adapter->setResponse($response);
 
         $response = $this->rest->restPost('/rest/', array('foo' => 'bar', 'baz' => 'bat'));
-        $this->assertTrue($response instanceof Zend_Http_Response);
+        $this->assertInstanceOf(Zend_Http_Response::class, $response);
         $body = $response->getBody();
         $this->assertStringContainsString($expXml, $response->getBody());
 
@@ -221,7 +225,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
 
         $reqXml   = file_get_contents($this->path . 'returnInt.xml');
         $response = $this->rest->restPut('/rest/', $reqXml);
-        $this->assertTrue($response instanceof Zend_Http_Response);
+        $this->assertInstanceOf(Zend_Http_Response::class, $response);
         $body = $response->getBody();
         $this->assertStringContainsString($expXml, $response->getBody());
 
@@ -245,7 +249,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
 
         $reqXml   = file_get_contents($this->path . 'returnInt.xml');
         $response = $this->rest->restDelete('/rest/', $reqXml);
-        $this->assertTrue($response instanceof Zend_Http_Response);
+        $this->assertInstanceOf(Zend_Http_Response::class, $response);
         $body = $response->getBody();
         $this->assertStringContainsString($expXml, $response->getBody());
 
@@ -268,7 +272,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
         $this->adapter->setResponse($response);
 
         $response = $this->rest->get('/rest/');
-        $this->assertTrue($response instanceof Zend_Rest_Client_Result);
+        $this->assertInstanceOf(Zend_Rest_Client_Result::class, $response);
         $this->assertTrue($response->isSuccess());
         $this->assertEquals('string', $response->response());
     }
@@ -288,7 +292,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
         $this->adapter->setResponse($response);
 
         $response = $this->rest->doStuff('why', 'not');
-        $this->assertTrue($response instanceof Zend_Rest_Client);
+        $this->assertInstanceOf(Zend_Rest_Client::class, $response);
         $this->assertSame($this->rest, $response);
     }
 
@@ -307,7 +311,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
         $this->adapter->setResponse($response);
 
         $response = $this->rest->doStuff('why', 'not')->get();
-        $this->assertTrue($response instanceof Zend_Rest_Client_Result);
+        $this->assertInstanceOf(Zend_Rest_Client_Result::class, $response);
         $this->assertEquals('string', $response->response());
     }
 
@@ -339,7 +343,7 @@ class Zend_Rest_ClientTest extends PHPUnit\Framework\TestCase
         $this->adapter->setResponse($response);
 
         $response = $this->rest->get('/rest/');
-        $this->assertTrue($response instanceof Zend_Rest_Client_Result);
+        $this->assertInstanceOf(Zend_Rest_Client_Result::class, $response);
         $this->assertFalse($response->getStatus());
     }
 }

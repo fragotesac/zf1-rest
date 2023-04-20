@@ -69,7 +69,7 @@ class Zend_Rest_RouteTest extends PHPUnit\Framework\TestCase
         $router = new Zend_Controller_Router_Rewrite();
         $router->addConfig($config, 'routes');
         $route = $router->getRoute('rest');
-        $this->assertTrue($route instanceof Zend_Rest_Route);
+        $this->assertInstanceOf(Zend_Rest_Route::class, $route);
         $this->assertEquals('object', $route->getDefault('controller'));
 
         $request = $this->_buildRequest('GET', '/mod/project');
