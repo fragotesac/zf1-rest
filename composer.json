@@ -14,14 +14,14 @@
         "ext-dom": "*",
         "ext-SimpleXML": "*",
         "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
-        "diablomedia/zendframework1-exception": "^1.0.0",
-        "diablomedia/zendframework1-config": "^1.0.0 || ^2.0.0",
-        "diablomedia/zendframework1-server": "^1.0.0",
+        "diablomedia/zendframework1-exception": "^1.1.1",
+        "diablomedia/zendframework1-config": "^2.0.5",
+        "diablomedia/zendframework1-server": "^1.0.5",
         "diablomedia/zendframework1-xml": "^1.0.5",
-        "diablomedia/zendframework1-controller": "^1.0.0",
-        "diablomedia/zendframework1-http": "^1.0.0",
-        "diablomedia/zendframework1-service": "^1.0.0",
-        "diablomedia/zendframework1-uri": "^1.0.0"
+        "diablomedia/zendframework1-controller": "^1.0.6",
+        "diablomedia/zendframework1-http": "^1.0.5",
+        "diablomedia/zendframework1-service": "^1.0.4",
+        "diablomedia/zendframework1-uri": "^1.0.5"
     },
     "autoload": {
         "psr-0": {
@@ -38,7 +38,7 @@
         "phpstan/phpstan": "1.10.67",
         "friendsofphp/php-cs-fixer": "3.54.0",
         "maglnet/composer-require-checker": "^3.0.0",
-        "phpro/grumphp-shim": "^1.5.0"
+        "phpro/grumphp-shim": "^2.0.0"
     },
     "archive": {
         "exclude": [
