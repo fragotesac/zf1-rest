@@ -1,5 +1,5 @@
 {
-    "name": "diablomedia/zendframework1-rest",
+    "name": "fragotesac/zf1-rest",
     "description": "Zend Framework 1 Rest component",
     "type": "library",
     "keywords": [
@@ -14,14 +14,14 @@
         "ext-dom": "*",
         "ext-SimpleXML": "*",
         "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
-        "diablomedia/zendframework1-exception": "^1.1.1",
-        "diablomedia/zendframework1-config": "^2.0.5",
-        "diablomedia/zendframework1-server": "^1.0.5",
-        "diablomedia/zendframework1-xml": "^1.0.5",
-        "diablomedia/zendframework1-controller": "^1.0.6",
-        "diablomedia/zendframework1-http": "^1.0.5",
-        "diablomedia/zendframework1-service": "^1.0.4",
-        "diablomedia/zendframework1-uri": "^1.0.5"
+        "fragotesac/zf1-exception": "^1.1.1",
+        "fragotesac/zf1-config": "^2.0.5",
+        "fragotesac/zf1-server": "^1.0.5",
+        "fragotesac/zf1-xml": "^1.0.5",
+        "fragotesac/zf1-controller": "^1.0.6",
+        "fragotesac/zf1-http": "^1.0.5",
+        "fragotesac/zf1-service": "^1.0.4",
+        "fragotesac/zf1-uri": "^1.0.5"
     },
     "autoload": {
         "psr-0": {
